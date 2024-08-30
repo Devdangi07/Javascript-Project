@@ -5,31 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor Game</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        body {
-            text-align: center;
-            margin-top: 200px;
-            background-color: rgb(37, 35, 35);
 
-        }
-
-        #rock {
-            color: red;
-            font-size: 25px;
-
-        }
-
-        #scissor {
-            color: green;
-            font-size: 25px;
-        }
-
-        #paper {
-            color: blue;
-            font-size: 25px;
-        }
-    </style>
 </head>
 
 <body>
@@ -37,99 +15,30 @@
         let computerChoice=generateComputerChoice();
         let resultMsg=getResult('Rock',computerChoice);
         showResult('Rock',computerChoice, resultMsg );
-        "> Rock</button>
+        "> <i class="fa-regular fa-hand-back-fist"></i></button>
 
     <button id="paper" onclick="
      computerChoice=generateComputerChoice();
      resultMsg=getResult('Paper',computerChoice);
     showResult('Paper',computerChoice, resultMsg );
-    "> Paper</button>
+    "> <i class="fa-regular fa-hand"></i></button>
     <button id="scissor" onclick="
      computerChoice=generateComputerChoice();
      resultMsg=getResult('Scissor',computerChoice);
     showResult('Scissor',computerChoice, resultMsg ); 
-    "> Scissor</button>
+    "> <i class="fa-regular fa-hand-scissors"></i></button>
 
+     <h3 id="user-move"></h3>
+     <h3 id="computer-move"></h3>
+     <h3 id="result"></h3>
+     <h3 id="score"></h3> 
 
-    <script>
-        alert(`Welcome! Let's play`);
-        alert('Please select any one of them');
-        let score = {
-            won: 0,
-            lost: 0,
-            tie: 0,
-            displayScore: function () {
-                return `Won:${score.won}, Lost:${score.lost}, Tie:${score.tie}`;
-            }
-
-        }
-        function generateComputerChoice() {
-
-            let randomNumber = Math.random() * 3;
-            if (randomNumber > 0 && randomNumber <= 1) {
-                return 'Rock';
-            }
-            else if (randomNumber > 1 && randomNumber <= 2) {
-                return 'Paper';
-            }
-            else {
-                return 'Scissor'
-            }
-        }
-
-        function getResult(userMove, computerMove) {
-            if (userMove === 'Rock') {
-                if (computerMove === 'Rock') {
-                    score.tie++;
-                    return `It's a tie`;
-                }
-                else if (computerMove === 'Paper') {
-                    score.lost++;
-                    return `Computer won`;
-                }
-                else {
-                    score.won++;
-                    return 'User won';
-                }
-            }
-            if (userMove === 'Paper') {
-                if (computerMove === 'Paper') {
-                    score.tie++;
-                    return `It's a tie`;
-                }
-                else if (computerMove === 'Rock') {
-                    score.won++;
-                    return `User won`;
-                }
-                else {
-                    score.lost++;
-                    return 'COmputer won';
-                }
-            }
-            else {
-                if (computerMove === 'Scissor') {
-                    score.tie++;
-                    return `It's a tie`;
-                }
-                else if (computerMove === 'Rock') {
-                    score.lost++;
-                    return `Computer won`;
-                }
-                else {
-                    score.won++;
-                    return 'User won';
-                }
-            }
-        }
-
-        function showResult(userMove, computerMove, result) {
-            alert(`You have choose a ${userMove}. Computer choose a ${computerMove} 
-              ${result}
-              ${score.displayScore()}
-              `);
-        }
-
-    </script>
+    <button id="reset" onclick="
+     localStorage.clear()
+     resetScore(scoreStr);
+    "><i class="fa-solid fa-arrows-rotate"></i></button>
+    <script src="string1.js"></script>
+   
 </body>
 
 </html>
